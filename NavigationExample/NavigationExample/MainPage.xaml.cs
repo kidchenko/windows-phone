@@ -44,5 +44,22 @@ namespace NavigationExample
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Simple Navigation, no parameters
+            //Frame.Navigate(typeof (SecondPage));
+
+            // Simple Navigation, with paramters
+            //Frame.Navigate(typeof(SecondPage), "Hello from MainPage.xaml");
+
+            var nav = new NavigationContext()
+            {
+                Description = "This is a Description",
+                Id = 1,
+                Name = "This is a Name"
+            };
+            Frame.Navigate(typeof (SecondPage), nav);
+        }
     }
 }

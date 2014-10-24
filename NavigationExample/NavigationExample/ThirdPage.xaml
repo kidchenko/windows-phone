@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="NavigationExample.MainPage"
+    x:Class="NavigationExample.ThirdPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NavigationExample"
@@ -9,8 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Margin="30,30, 0, 0">
-        <TextBlock Text="Main.xaml" />
-        <TextBlock x:Name="MyTextBlock" Text="" FontSize="32" />
-        <Button Content="Go To Page 2" Click="Button_Click" />
+        <TextBlock Text="ThirdPage.xaml" />
+        <TextBlock x:Name="MyTextBlock" Text="" FontSize="20" />
+        <Button Content="Go Back" Click="Button_Click" />
     </StackPanel>
 </Page>
