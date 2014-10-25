@@ -44,5 +44,21 @@ namespace TipCalculator
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        private void BillAmountTextBox_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void BillAmountTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void BillAmountTextBox_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
