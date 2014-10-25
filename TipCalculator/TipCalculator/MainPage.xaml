@@ -27,8 +27,7 @@
             Grid.Row="1"
             FontSize="38"
         />
-        
-        <StackPanel Grid.Row="2" Margin="20, 0, 20, 0">
+        <StackPanel Grid.Row="2" Margin="20, 0, 20, 0" Name="StackPanel">
             <TextBlock 
                 HorizontalAlignment="Left"
                 TextWrapping="Wrap"
@@ -37,14 +36,14 @@
             />
             <TextBox 
                 Name="BillAmountTextBox"
-                Text="$0.00"
                 TextAlignment="Right"
                 HorizontalAlignment="Left"
                 TextWrapping="Wrap"
                 VerticalAlignment="Top"
                 InputScope="Number"
-                Width="100"
+                Width="150"
                 FontSize="24"
+                Text="0.00"
                 LostFocus="BillAmountTextBox_OnLostFocus"
                 TextChanged="BillAmountTextBox_OnTextChanged"
                 GotFocus="BillAmountTextBox_OnGotFocus"
@@ -84,10 +83,11 @@
                 Margin="0, 20, 0. 0"
             />
             <TextBlock
+                Name="TipAmountTextBlock"
                 HorizontalAlignment="Left"
                 TextWrapping="Wrap"
                 VerticalAlignment="Top"
-                Text="$0.00"
+                Text="0.00"
                 FontSize="36"
             />
             <TextBlock
@@ -99,10 +99,11 @@
                 Margin="0, 20, 0. 0"
             />
             <TextBlock
+                Name="TotalAmountTextBlock"
                 HorizontalAlignment="Left"
                 TextWrapping="Wrap"
                 VerticalAlignment="Top"
-                Text="$0.00"
+                Text="0.00"
                 FontSize="36"
             />
         </StackPanel>
