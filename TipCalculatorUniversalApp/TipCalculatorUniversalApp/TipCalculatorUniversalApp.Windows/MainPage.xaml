@@ -8,6 +8,103 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <TextBlock 
+            Margin="20,0, 20, 0" 
+            Text="Tip Calculator" 
+            Grid.Row="0" 
+            Style="{StaticResource TitleTextBlockStyle}"
+        />
+        <TextBlock 
+            Margin="20, 0, 20, 0"
+            Text="Enter the Bill Amount"
+            Grid.Row="1"
+            FontSize="38"
+        />
+        <StackPanel Grid.Row="2" Margin="20, 0, 20, 0" Name="StackPanel">
+            <TextBlock 
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                Text="Bill Amount"
+                FontSize="24"
+            />
+            <TextBox 
+                Name="BillAmountTextBox"
+                TextAlignment="Right"
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                InputScope="Number"
+                Width="150"
+                FontSize="24"
+                Text="0.00"
+                LostFocus="BillAmountTextBox_OnLostFocus"
+                TextChanged="BillAmountTextBox_OnTextChanged"
+                GotFocus="BillAmountTextBox_OnGotFocus"
+            />
+
+            <TextBlock
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                Text="Percent to Tip:"
+                VerticalAlignment="Top"
+                FontSize="24"
+                Margin="0, 20, 0, 0"
+            />
+
+            <RadioButton 
+                Content="10% - Horrible Service"
+                Tag="0.1"
+                Click="RadioButton_Click"
+            />
+            <RadioButton 
+                Content="18% - Acceptable Service"
+                Tag="0.18"
+                IsChecked="True"
+                Click="RadioButton_Click"
+            />
+            <RadioButton 
+                Content="25% - Great Service"
+                Tag="0.25"
+                Click="RadioButton_Click"
+            />
+            <TextBlock
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Text="Amount to Tip:"
+                FontSize="24"
+                Margin="0, 20, 0. 0"
+            />
+            <TextBlock
+                Name="TipAmountTextBlock"
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Text="0.00"
+                FontSize="36"
+            />
+            <TextBlock
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Text="Total Bill:"
+                FontSize="24"
+                Margin="0, 20, 0. 0"
+            />
+            <TextBlock
+                Name="TotalAmountTextBlock"
+                HorizontalAlignment="Left"
+                TextWrapping="Wrap"
+                VerticalAlignment="Top"
+                Text="0.00"
+                FontSize="36"
+            />
+        </StackPanel>
     </Grid>
 </Page>
