@@ -19,30 +19,43 @@
             </NavigationThemeTransition>
         </TransitionCollection>
     </Page.Transitions>
+    <ScrollViewer>
+        <Grid x:Name="LayoutRoot">
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-    <Grid x:Name="LayoutRoot">
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+            <!-- Title Panel -->
+            <StackPanel Grid.Row="0" Margin="19,0,0,0">
+                <TextBlock x:Uid="Header" Text="i love cupcakes" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0" />
+                <TextBlock Text="{Binding Title}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,-6.5,0,26.5" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            </StackPanel>
 
-        <!-- Title Panel -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock x:Uid="Header" Text="application name" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0" />
-            <TextBlock Text="{Binding Title}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,-6.5,0,26.5" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
-        </StackPanel>
-
-        <!-- 
+            <!-- 
             TODO: Content should be placed within the following grid 
                   to show details for the current item
         -->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+                <StackPanel>
+                    <Image Source="{Binding ImagePath}"
+                       Margin="0, 12, 0, 0"
+                       Height="200"
+                       Stretch="UniformToFill"
+                       />
+                    <TextBlock Text="{Binding Content}"
+                           Margin="10, 12, 10, 0"
+                           TextWrapping="Wrap"
+                           FontSize="20"
+                           />
+                </StackPanel>
 
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>
