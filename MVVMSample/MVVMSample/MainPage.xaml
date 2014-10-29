@@ -8,7 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 5, 0, 5"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+    </Page.Resources>
+    <StackPanel>
+        <TextBlock Text="Element Data Binding" />
+        <TextBox Name="MyTextBox" />
+        <TextBlock Text="{Binding ElementName=MyTextBox, Path=Text}"/>
 
-    </Grid>
+        <TextBlock Text="No Data Binding" />
+        <TextBox Text="{Binding Id}" />
+        <TextBlock Text="{Binding Id}" />
+
+        <TextBlock Text="Two Way DataBinding" />
+        <TextBox Text="{Binding Name, Mode=TwoWay}" />
+        <TextBlock Text="{Binding Name}" />
+
+
+    </StackPanel>
 </Page>
