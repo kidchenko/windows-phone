@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
@@ -22,11 +12,13 @@ namespace SoundAndVideoApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private MediaState _state;
         public MainPage()
         {
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+            _state= MediaState.Stopped;
         }
 
         /// <summary>
@@ -44,5 +36,47 @@ namespace SoundAndVideoApp
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        
+
+        private void PlaySoundButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            // set source in runtime 
+            MyMediaElement.Source = new Uri("ms-appx:///Assets/duck.wav", UriKind.RelativeOrAbsolute);
+            MyMediaElement.Play();
+        }
+
+
+        private void PlayVideoButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            switch (_state)
+            {
+                case MediaState.Stopped:
+                    MyMediaElement.Source = new Uri("ms-appx:///Assets/coffee.mp4", UriKind.RelativeOrAbsolute);
+                    MyMediaElement.Play();
+                    _state = MediaState.Playing;
+                    break;
+                case MediaState.Playing:
+                    MyMediaElement.Pause();
+                    _state = MediaState.Paused;
+                    break;
+                case MediaState.Paused:
+                    MyMediaElement.Play();
+                    _state = MediaState.Playing;
+                    break;
+            }
+        }
+
+        private void MyMediaElement_OnMediaEnded(object sender, RoutedEventArgs e)
+        {
+            _state = MediaState.Stopped;
+        }
+    }
+
+    public enum MediaState
+    {
+        Stopped,
+        Playing,
+        Paused,
     }
 }

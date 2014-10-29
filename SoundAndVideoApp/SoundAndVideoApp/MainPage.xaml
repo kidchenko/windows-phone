@@ -8,7 +8,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <StackPanel>
+        <!-- Source="Assets/duck.wav"-->
+        <MediaElement
+            Name="MyMediaElement"
+            Height="400"
+            Width="240"
+            Margin="40"
+            MediaEnded="MyMediaElement_OnMediaEnded"
+            />
+        <Button  
+            Name="PlaySoundButton"
+            Content="Play Sound"
+            Click="PlaySoundButton_OnClick"
+            />
+        <Button  
+            Name="PlayVideoButton"
+            Content="Play Video"
+            Click="PlayVideoButton_OnClick"
+            />
+    </StackPanel>
 </Page>
