@@ -60,8 +60,10 @@
     </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <Hub x:Name="Hub" x:Uid="Hub" Header="application name" Background="{ThemeResource HubBackgroundImageBrush}">
-            <HubSection x:Uid="HubSection1" Header="SECTION 1" DataContext="{Binding Groups}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+        <Hub x:Name="Hub" x:Uid="Hub" 
+             Header="i love cupcakes" 
+             Background="{ThemeResource HubBackgroundImageBrush}">
+            <!--<HubSection x:Uid="HubSection1" Header="SECTION 1" DataContext="{Binding Groups}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
                     <ListView
                         ItemsSource="{Binding}"
@@ -77,10 +79,12 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </DataTemplate>
-            </HubSection>
+            </HubSection>-->
 
-            <HubSection x:Uid="HubSection2" Header="SECTION 2" Width="Auto"
-                         DataContext="{Binding Groups[0]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
+            <HubSection x:Uid="HubSection2" 
+                        Header="RECIPES" 
+                        Width="Auto"
+                        DataContext="{Binding Groups[0]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
                     <GridView
                         Margin="0,9.5,0,0"
@@ -101,7 +105,8 @@
                 </DataTemplate>
             </HubSection>
 
-            <HubSection x:Uid="HubSection3" Header="SECTION 3"
+            <HubSection x:Uid="HubSection3" 
+                        Header="VIDEOS"
                         DataContext="{Binding Groups[1]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
                     <ListView 
@@ -117,7 +122,7 @@
                 </DataTemplate>
             </HubSection>
 
-            <HubSection x:Uid="HubSection4" Header="SECTION 4"
+            <!--<HubSection x:Uid="HubSection4" Header="SECTION 4"
                         DataContext="{Binding Groups[2]}" HeaderTemplate="{ThemeResource HubSectionHeaderTemplate}">
                 <DataTemplate>
                     <ListView 
@@ -154,7 +159,7 @@
                         ContinuumNavigationTransitionInfo.ExitElementContainer="True">
                     </ListView>
                 </DataTemplate>
-            </HubSection>
+            </HubSection>-->
         </Hub>
     </Grid>
 </Page>
