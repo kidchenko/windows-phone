@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MVVMSample
 {
@@ -20,7 +15,7 @@ namespace MVVMSample
             set
             {
                 _name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged();
             }
         }
 
@@ -28,10 +23,12 @@ namespace MVVMSample
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // CallerMemberName Permite obter o nome do método ou propriedade que está chamando o método.
+        // see http://msdn.microsoft.com/pt-br/library/system.runtime.compilerservices.callermembernameattribute%28v=vs.110%29.aspx
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var handler = PropertyChanged;
-            // c# 6.0 see http://davefancher.com/2014/08/14/c-6-0-null-propagation-operator/
+            // null propagation c# 6.0 see http://davefancher.com/2014/08/14/c-6-0-null-propagation-operator/
             handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
