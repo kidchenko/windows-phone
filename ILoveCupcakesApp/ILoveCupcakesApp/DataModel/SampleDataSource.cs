@@ -5,8 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Storage;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
 // The data model defined by this file serves as a representative example of a strongly-typed
 // model.  The property names chosen coincide with data bindings in the standard item templates.
@@ -23,18 +21,20 @@ namespace ILoveCupcakesApp.Data
     /// </summary>
     public class SampleDataItem
     {
-        public SampleDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content)
+        public SampleDataItem(string uniqueId, string title, string type, string subtitle, string imagePath, string description, string content)
         {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.Content = content;
+            UniqueId = uniqueId;
+            Title = title;
+            Type = type;
+            Subtitle = subtitle;
+            Description = description;
+            ImagePath = imagePath;
+            Content = content;
         }
 
         public string UniqueId { get; private set; }
         public string Title { get; private set; }
+        public string Type { get; private set; }
         public string Subtitle { get; private set; }
         public string Description { get; private set; }
         public string ImagePath { get; private set; }
@@ -42,7 +42,7 @@ namespace ILoveCupcakesApp.Data
 
         public override string ToString()
         {
-            return this.Title;
+            return Title;
         }
     }
 
@@ -53,12 +53,12 @@ namespace ILoveCupcakesApp.Data
     {
         public SampleDataGroup(String uniqueId, String title, String subtitle, String imagePath, String description)
         {
-            this.UniqueId = uniqueId;
-            this.Title = title;
-            this.Subtitle = subtitle;
-            this.Description = description;
-            this.ImagePath = imagePath;
-            this.Items = new ObservableCollection<SampleDataItem>();
+            UniqueId = uniqueId;
+            Title = title;
+            Subtitle = subtitle;
+            Description = description;
+            ImagePath = imagePath;
+            Items = new ObservableCollection<SampleDataItem>();
         }
 
         public string UniqueId { get; private set; }
@@ -70,7 +70,7 @@ namespace ILoveCupcakesApp.Data
 
         public override string ToString()
         {
-            return this.Title;
+            return Title;
         }
     }
 
@@ -87,7 +87,7 @@ namespace ILoveCupcakesApp.Data
         private ObservableCollection<SampleDataGroup> _groups = new ObservableCollection<SampleDataGroup>();
         public ObservableCollection<SampleDataGroup> Groups
         {
-            get { return this._groups; }
+            get { return _groups; }
         }
 
         public static async Task<IEnumerable<SampleDataGroup>> GetGroupsAsync()
@@ -101,7 +101,7 @@ namespace ILoveCupcakesApp.Data
         {
             await _sampleDataSource.GetSampleDataAsync();
             // Simple linear search is acceptable for small data sets
-            var matches = _sampleDataSource.Groups.Where((group) => group.UniqueId.Equals(uniqueId));
+            var matches = _sampleDataSource.Groups.Where(group => group.UniqueId.Equals(uniqueId));
             if (matches.Count() == 1) return matches.First();
             return null;
         }
@@ -110,14 +110,14 @@ namespace ILoveCupcakesApp.Data
         {
             await _sampleDataSource.GetSampleDataAsync();
             // Simple linear search is acceptable for small data sets
-            var matches = _sampleDataSource.Groups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
+            var matches = _sampleDataSource.Groups.SelectMany(group => group.Items).Where(item => item.UniqueId.Equals(uniqueId));
             if (matches.Count() == 1) return matches.First();
             return null;
         }
 
         private async Task GetSampleDataAsync()
         {
-            if (this._groups.Count != 0)
+            if (_groups.Count != 0)
                 return;
 
             Uri dataUri = new Uri("ms-appx:///DataModel/SampleData.json");
@@ -141,12 +141,13 @@ namespace ILoveCupcakesApp.Data
                     JsonObject itemObject = itemValue.GetObject();
                     group.Items.Add(new SampleDataItem(itemObject["UniqueId"].GetString(),
                                                        itemObject["Title"].GetString(),
+                                                       itemObject["Type"].GetString(),
                                                        itemObject["Subtitle"].GetString(),
                                                        itemObject["ImagePath"].GetString(),
                                                        itemObject["Description"].GetString(),
                                                        itemObject["Content"].GetString()));
                 }
-                this.Groups.Add(group);
+                Groups.Add(group);
             }
         }
     }
