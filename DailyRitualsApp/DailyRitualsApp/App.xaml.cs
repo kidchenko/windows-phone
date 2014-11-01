@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using DailyRitualsApp.DataModel;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -25,6 +26,7 @@ namespace DailyRitualsApp
     /// </summary>
     public sealed partial class App : Application
     {
+        public static DataSource Data;
         private TransitionCollection transitions;
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace DailyRitualsApp
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            Data = new DataSource();
         }
 
         /// <summary>
