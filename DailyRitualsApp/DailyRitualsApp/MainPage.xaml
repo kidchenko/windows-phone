@@ -7,8 +7,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Add Ritual" Name="AddRitual" Click="AddRitual_OnClick"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <TextBlock Text="Daily Rituals" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" />
+        <TextBlock Text="Tack your progress of your goals" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" />
+        <Grid Grid.Row="2" Margin="10">
+            <Grid.Resources>
+                <DataTemplate x:Name="DataTemplate">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="24"/>
+                        <TextBlock Text="{Binding Description}" FontSize="18" />
+                        <Button Content="I did this today!" />
+                    </StackPanel>
+                </DataTemplate>
+            </Grid.Resources>
+            <ItemsControl ItemsSource="{Binding}"
+                          ItemTemplate="{StaticResource DataTemplate}" />
+
+        </Grid>
     </Grid>
 </Page>

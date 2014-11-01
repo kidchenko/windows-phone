@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
@@ -45,6 +46,11 @@ namespace DailyRitualsApp
             // this event is handled for you.
             var rituals = await App.Data.GetRituals();
             DataContext = rituals;
+        }
+
+        private void AddRitual_OnClick(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof (AddRitual));
         }
     }
 }
