@@ -13,7 +13,7 @@ namespace DailyRitualsApp.DataModel
     public class DataSource
     {
         private ObservableCollection<Ritual> _rituals;
-        private const string FILE_NAME = "";
+        private const string FILE_NAME = "data.json";
 
         public DataSource()
         {
