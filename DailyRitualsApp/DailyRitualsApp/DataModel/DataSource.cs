@@ -26,17 +26,26 @@ namespace DailyRitualsApp.DataModel
             await SaveRitualDataAsync();
         }
 
+        public async Task<ObservableCollection<Ritual>> GetRituals()
+        {
+            await EnsureDataLoaded();
+            return _rituals;
+        }
+
+        public async void CompleteRitualToday(Ritual ritual)
+        {
+            var index = _rituals.IndexOf(ritual);
+            _rituals[index].AddDate();
+            await SaveRitualDataAsync();
+        }
+
         private async Task EnsureDataLoaded()
         {
             if (_rituals.Any()) return;
             await GetRitualDataAsync();
         }
 
-        public async Task<ObservableCollection<Ritual>> GetRituals()
-        {
-            await EnsureDataLoaded();
-            return _rituals;
-        }
+        
 
         private async Task GetRitualDataAsync()
         {

@@ -88,6 +88,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\CompletedButtonClick.cs" />
     <Compile Include="DataModel\DataSource.cs" />
     <Compile Include="DataModel\Ritual.cs" />
     <Compile Include="MainPage.xaml.cs">

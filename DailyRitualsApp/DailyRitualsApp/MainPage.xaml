@@ -28,7 +28,10 @@
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="{Binding Name}" FontSize="24"/>
                         <TextBlock Text="{Binding Description}" FontSize="18" />
-                        <Button Content="I did this today!" />
+                        <Button Content="I did this today!"
+                                Command="{Binding CompletedCommand}"
+                                CommandParameter="{Binding}" />
+                                
                     </StackPanel>
                 </DataTemplate>
             </Grid.Resources>
