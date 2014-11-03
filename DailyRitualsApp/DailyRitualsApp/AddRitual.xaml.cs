@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using DailyRitualsApp.DataModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -34,6 +35,12 @@ namespace DailyRitualsApp
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+        }
+
+        private void AddButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            App.Data.AddRitual(new Ritual { Name = GoalNameTextBox.Text, Description = GoalDescriptionTextBox.Text});
+            Frame.Navigate(typeof (MainPage));
         }
     }
 }
