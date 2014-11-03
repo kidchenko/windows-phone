@@ -5,39 +5,46 @@
     xmlns:local="using:DailyRitualsApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vc="using:DailyRitualsApp.ValueConverters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <vc:IsCompleteToBooleanConverter x:Key="IsCompleteToBooleanConverter" />
+    </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Add" Label="Add Ritual" Name="AddRitual" Click="AddRitual_OnClick"/>
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <TextBlock Text="Daily Rituals" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" />
-        <TextBlock Text="Tack your progress of your goals" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" />
-        <Grid Grid.Row="2" Margin="10">
-            <Grid.Resources>
-                <DataTemplate x:Name="DataTemplate">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding Name}" FontSize="24"/>
-                        <TextBlock Text="{Binding Description}" FontSize="18" />
-                        <Button Content="I did this today!"
+            <TextBlock Text="Daily Rituals" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock Text="Tack your progress of your goals" Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" />
+            <Grid Grid.Row="2" Margin="10">
+                <Grid.Resources>
+                    <DataTemplate x:Name="DataTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}" FontSize="24"/>
+                            <TextBlock Text="{Binding Description}" FontSize="18" />
+                            <Button Content="I did this today!"
                                 Command="{Binding CompletedCommand}"
-                                CommandParameter="{Binding}" />
-                                
-                    </StackPanel>
-                </DataTemplate>
-            </Grid.Resources>
-            <ItemsControl ItemsSource="{Binding}"
+                                CommandParameter="{Binding}"
+                                IsEnabled="{Binding Dates, Converter={StaticResource IsCompleteToBooleanConverter}}" />
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </Grid.Resources>
+                <ItemsControl ItemsSource="{Binding}"
                           ItemTemplate="{StaticResource DataTemplate}" />
 
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>
