@@ -10,6 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <vc:IsCompleteToBooleanConverter x:Key="IsCompleteToBooleanConverter" />
+        <vc:CompletedDatesToIntegerConverter x:Key="CompletedDatesToIntegerConverter" />
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
@@ -37,7 +38,9 @@
                                 Command="{Binding CompletedCommand}"
                                 CommandParameter="{Binding}"
                                 IsEnabled="{Binding Dates, Converter={StaticResource IsCompleteToBooleanConverter}}" />
-                            
+                            <ProgressBar Maximum="30"
+                                         Minimum="0"
+                                         Value="{Binding Dates, Converter={StaticResource CompletedDatesToIntegerConverter}}" />
                         </StackPanel>
                     </DataTemplate>
                 </Grid.Resources>
