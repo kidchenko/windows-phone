@@ -23,7 +23,7 @@
         </StackPanel>
         <Maps:MapControl Name="MyMapControl" Grid.Row="2" />
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <Button Content="Add" Click="AddButton_OnClick" />
+            <Button Name="AddButton" Content="Add" Click="AddButton_OnClick" />
             <Button Content="Cancel" Click="CancelButton_OnClick" />
         </StackPanel>
     </Grid>

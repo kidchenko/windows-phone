@@ -26,12 +26,12 @@
             <ListView ItemsSource="{Binding}"
                       Grid.Row="1"
                       SelectionMode="None"
-                      IsItemClickEnabled="False"
+                      IsItemClickEnabled="True"
                       ItemClick="ListView_OnItemClick" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding Title}" />
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" />
                             <TextBlock Text="{Binding Note}" />
                         </StackPanel>
                     </DataTemplate>

@@ -54,7 +54,7 @@ namespace MapNotesApp
 
         private void ListView_OnItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            Frame.Navigate(typeof(AddMapNote), e.ClickedItem);
         }
     }
 }
