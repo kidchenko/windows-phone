@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
     x:Class="MapNotesApp.AddMapNote"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,6 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Title:" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBox Name="TitleTextBox" />
+            <TextBlock Text="Note:" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBox Name="NoteTextBox" />
+        </StackPanel>
+        <Maps:MapControl Name="MyMapControl" Grid.Row="2" />
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button Content="Add" Click="AddButton_OnClick" />
+            <Button Content="Cancel" Click="CancelButton_OnClick" />
+        </StackPanel>
     </Grid>
 </Page>
