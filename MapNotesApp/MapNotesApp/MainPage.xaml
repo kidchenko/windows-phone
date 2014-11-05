@@ -7,8 +7,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Map" Label="Add Note" Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
-    <Grid>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Map Notes"
+                       Grid.Row="0"
+                       Style="{StaticResource HeaderTextBlockStyle}" />
 
-    </Grid>
+            <ListView ItemsSource="{Binding}"
+                      Grid.Row="1"
+                      SelectionMode="None"
+                      IsItemClickEnabled="False"
+                      ItemClick="ListView_OnItemClick" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title}" />
+                            <TextBlock Text="{Binding Note}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollViewer>
 </Page>

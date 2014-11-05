@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using MapNotesApp.DataModel;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -26,6 +27,7 @@ namespace MapNotesApp
     public sealed partial class App : Application
     {
         private TransitionCollection transitions;
+        public static DataSource Data;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -35,6 +37,7 @@ namespace MapNotesApp
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            Data = new DataSource();
         }
 
         /// <summary>
