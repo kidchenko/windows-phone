@@ -31,8 +31,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" />
-                            <TextBlock Text="{Binding Note}" />
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap" TextTrimming="WordEllipsis" />
+                            <TextBlock Text="{Binding Note}" TextWrapping="Wrap"  />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
